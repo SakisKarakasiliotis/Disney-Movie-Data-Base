@@ -25,5 +25,6 @@ export interface DisneyCharacterApiResponse {
     next?: Nullable<string>;
     prev?: Nullable<string>;
   };
+  // The API response can return either an array of characters or a single character
   data?: Nullable<DinseyCharacter[]>;
 }

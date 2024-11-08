@@ -15,8 +15,9 @@ function Logo({ url }: LogoProps) {
 
 const StyledLogo = styled.figure`
   display: flex;
-  width: 200px;
+  width: 80px;
   position: relative;
+  margin: 0;
 
   img {
     width: 100%;

@@ -4,7 +4,8 @@ import type { DisneyCharacterApiResponse } from './types'
 export interface QueryParameters {
   page: number
   pageSize: number,
-  name?: string
+  name?: string,
+  films?: string,
 }
 
 export const disneyCharactersApi = createApi({
@@ -19,7 +20,21 @@ export const disneyCharactersApi = createApi({
           params: queryParameters
         })
       },
+      transformResponse: (response: DisneyCharacterApiResponse):DisneyCharacterApiResponse => {
+        const { data } = response;
+
+        if (Array.isArray(data) || !data) {
+          return response;
+        }
+
+        return {
+          ...response,
+          data: [data],
+        };
+
+      },
     }),
+
   }),
 })
 
