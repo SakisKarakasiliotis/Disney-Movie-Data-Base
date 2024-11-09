@@ -24,7 +24,7 @@ export default function Pagination({
     <StyledPagination>
       <div className="page-size">
         <select
-          defaultValue={pageSize}
+          value={pageSize}
           onChange={(e) => setPageSize(Number(e.target.value))}
         >
           <option value="10">10</option>

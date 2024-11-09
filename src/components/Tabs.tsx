@@ -20,7 +20,7 @@ export default function Tabs({ defaultIndex, labels, children }: TabsProps) {
     <StyledTabs>
       <ul className="labels" role="tablist" aria-label="tabs">
         {labels.map((label, index) => (
-          <li>
+          <li key={label}>
             <button
               className={`${activeTab === index ? "active" : ""}`}
               key={label}

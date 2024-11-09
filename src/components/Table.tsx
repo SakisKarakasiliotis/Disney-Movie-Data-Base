@@ -17,6 +17,7 @@ export default function Table({
       <thead>
         <tr>
           <th>Name</th>
+          <th>Films</th>
           <th>TV Shows</th>
           <th>Video Games</th>
           <th>Allies</th>
@@ -25,11 +26,16 @@ export default function Table({
       </thead>
       <tbody>
         {disneyCharacters.map((disneyCharacter: DinseyCharacter) => (
-          <tr
-            key={disneyCharacter._id}
-            onClick={() => setSelectedDisneyCharacter(disneyCharacter)}
-          >
-            <td>{disneyCharacter.name}</td>
+          <tr key={disneyCharacter._id}>
+            <td>
+              <button
+                type="button"
+                onClick={() => setSelectedDisneyCharacter(disneyCharacter)}
+              >
+                {disneyCharacter.name}
+              </button>
+            </td>
+            <td>{disneyCharacter.films?.length}</td>
             <td>{disneyCharacter.tvShows?.length}</td>
             <td>{disneyCharacter.videoGames?.length}</td>
             <td>{disneyCharacter.allies?.join(", ")}</td>
@@ -51,11 +57,13 @@ const StyledTable = styled.table<{ $isFetching: boolean }>`
   pointer-events: ${(props) => (props.$isFetching ? "none" : "auto")};
   transition: opacity 0.2s;
   margin-block: var(--spacing-medium);
+  overflow: hidden;
 
   tr {
     border: 0;
     background-color: white;
     padding: 0;
+    position: relative;
 
     + tr {
       border-top: 1px solid var(--border-color);
@@ -75,6 +83,21 @@ const StyledTable = styled.table<{ $isFetching: boolean }>`
     vertical-align: top;
     color: var(--text-color);
     text-align: left;
+
+    button {
+      border: 0;
+      background: 0;
+      color: var(--text-color);
+      font-size: var(--font-size-medium);
+      padding: 0;
+      cursor: pointer;
+
+      &:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+    }
   }
 
   tbody {

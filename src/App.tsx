@@ -35,13 +35,18 @@ function App() {
     ...(search.value && { [search.type]: search.value }),
   });
 
+  const handleSearch = ({ value, type }: { value: string; type: string }) => {
+    setSearch({ value, type });
+    setPage(1);
+  };
+
   console.log(data, error, isFetching);
 
   return (
     <>
       <Header>
         <Logo url={logoUrl} />
-        <Search onSearch={setSearch} />
+        <Search onSearch={handleSearch} isFetching={isFetching} />
       </Header>
       <Tabs defaultIndex={0} labels={["Table", "Chart"]}>
         <>
