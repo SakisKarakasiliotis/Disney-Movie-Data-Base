@@ -6,21 +6,17 @@ import styled from "styled-components";
 interface SearchProps {
   /**
    * Function to be called when a search is performed.
-   * @param value - The search input value.
-   * @param type - The type of search (e.g., name, films, tvShows, videoGames).
+   * value - The search input value.
+   * type - The type of search (e.g., name, films, tvShows, videoGames).
    */
   onSearch: ({ value, type }: { value: string; type: string }) => void;
-
-  /**
-   * Boolean indicating if a search is currently being fetched.
-   */
   isFetching: boolean;
 }
 
 /**
  * Search component that allows users to search by different types.
- * @param onSearch - Function to handle the search action.
- * @param isFetching - Boolean to disable input during fetching.
+ * onSearch - Function to handle the search action.
+ * isFetching - Boolean to disable input during fetching.
  */
 export default function Search({ onSearch, isFetching }: SearchProps) {
   const [value, setValue] = useState<string>("");

@@ -11,9 +11,6 @@ interface DialogProps {
 
 /**
  * Dialog component to display details of a Disney character.
- * @param disneyCharacter - The selected Disney character to display.
- * @param setSelectedDisneyCharacter - Function to clear the selected Disney character.
- * @returns {JSX.Element} The rendered Dialog component.
  */
 export default function Dialog({
   disneyCharacter,

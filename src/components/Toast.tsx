@@ -2,15 +2,11 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 interface ToastProps {
-  /** The message to be displayed in the toast. */
   message: string;
 }
 
 /**
  * Toast component that displays a message for a short duration.
- *
- * @param {ToastProps} props - The props for the Toast component.
- * @returns {JSX.Element | null} The Toast component or null if hidden.
  */
 export default function Toast({ message }: ToastProps) {
   const [hide, setHide] = useState(false);

@@ -17,8 +17,6 @@ interface Data {
 
 /**
  * A component that exports data to an Excel file.
- * @param {ExportXlsxProps} props - The props for the component.
- * @returns {JSX.Element} The rendered component.
  */
 export default function ExportXlsx({ data }: ExportXlsxProps) {
   /**

@@ -25,6 +25,9 @@ const HEADERs = [
   { key: "enemies", label: "Enemies", sort: false },
 ];
 
+/**
+ * SortIcon component to display the appropriate sort icon based on the sortedBy state
+ */
 const SortIcon = ({
   headerKey,
   sortedBy,
@@ -50,6 +53,9 @@ const SortIcon = ({
   return <FontAwesomeIcon icon={icon} />;
 };
 
+/**
+ * Table component to display a sortable table of Disney characters
+ */
 export default function Table({
   disneyCharacters,
   isFetching,
@@ -60,6 +66,9 @@ export default function Table({
     direction: sortDirection;
   }>({ key: "", direction: "" });
 
+  /**
+   * Function to toggle the sortedBy state based on the key
+   */
   const toggleSortedBy = useCallback(
     (key: string) => {
       switch (sortedBy.direction) {
@@ -76,6 +85,9 @@ export default function Table({
     [sortedBy.direction],
   );
 
+  /**
+   * Memoized function to sort the Disney characters based on the sortedBy state
+   */
   const sortedDisneyCharacters = useMemo(() => {
     if (sortedBy.key === "" || sortedBy.direction === "")
       return disneyCharacters;

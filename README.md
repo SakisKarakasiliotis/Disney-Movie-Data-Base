@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# DCDB Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### [ Try it online on github pages! 🔗](https://sakiskarakasiliotis.github.io/)
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The DCDB (Disney Character Data Base) project is a application designed to display and catalogue all the available Disney Characters provided from the Disney [API Service](https://disneyapi.dev/)
 
-## Expanding the ESLint configuration
+The project has kept components simple on purpose. Since everything is used exactly once and in order to keep it clean and straight forward every component made is kept tied to the business logic of the application.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Technologies**: Developed using Vite, React, Redux (RTK + RTKQuery), Typescript, Styled Components.
+- **Libraries**: Highcharts, Font awesome.
+- **Custom Components**: Chart, Dialog, ExportXlsx, Pagination, Search, Table, Tabs, Toast
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Data management
+
+The API is handled utilizing RTKQuery `createApi` utility. While developing I realized that some results would return an object instead of a table when only a single result was available. So I decided on adding a transformation on the response so that a table is always returned.
+
+## Styling
+
+The App was designed with a mobile first approach.
+Styled components where used for the convenience of passing props (admittedly on only one component).
+A small but practical collection of CSS variables is used to achieve uniformity on colors and spacings through the app.
+
+## Component Breakdown
+
+> I decided to utilize native components to the best of my ability because of the accessibility, performance and mobile friendliness of them. Specifically the select component is kept native on 2 occurrences where I believe a custom solution would be overkill (also the mobile experience is superior with the native select in my opinion)
+
+### Chart
+
+Simply uses the Highchart library to display a pie chart with each character on each page of the API response and a list of movies for said characters.
+Also contains a download button for an XLSX file that contains the same data.
+
+### Dialog
+
+Displays all the available info about one character. Uses the native HTML Dialog element in order to take advantage of its great accessibility and ready made functionality.
+
+### Pagination
+
+Simple components that provides basic navigation functionality both on pages and results per page configuration.
+
+### Search
+
+A components that allows the user to search base on the type of search (name, film, tv show, video game) and a specific keyword. I decided against fetching for results as the user types and added a button (as well as the enter key) as it is in my opinion better for the UX and also better for the server resources (less unnecessary requests). The same could be achieved through the use of a Debounce mechanism but I decided against it to keep this simple.
+
+### Table
+
+Displays all the available info of each character and allows sorting for each relevant column. Has a subtle loading animation on the opacity of the table and each row is clickable and triggers the Dialog component with more info for this character.
+
+### Tabs
+
+Allows for space efficient division of the 2 modes of displaying the data between the Table and the Chart component.
+Accepts indefinite number of tabs.
+
+### Toast
+
+A small message that gets displayed in case of an error and gets dismissed on its own. Could be easily expanded to get theme support.
+
+## Installation
+
+To get started with the DCDB project, follow these steps:
+
+1. Clone the repository:
+2. Navigate to the project directory:
+3. Install the dependencies:
+
+```bash
+yarn
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+4. Start the local dev server (Utilizing Vite)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+yarn dev
 ```

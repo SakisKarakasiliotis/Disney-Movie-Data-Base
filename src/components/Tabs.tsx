@@ -2,19 +2,13 @@ import { useState } from "react";
 import styled from "styled-components";
 
 interface TabsProps {
-  /** The index of the default active tab. */
   defaultIndex: number;
-  /** An array of labels for the tabs. */
   labels: string[];
-  /** An array of React nodes to be displayed as tab content. */
   children: React.ReactNode[];
 }
 
 /**
  * Tabs component to render a tabbed interface.
- *
- * @param {TabsProps} props - The props for the Tabs component.
- * @returns {JSX.Element | null} The rendered Tabs component.
  */
 export default function Tabs({ defaultIndex, labels, children }: TabsProps) {
   const [activeTab, setActiveTab] = useState<number>(defaultIndex);
