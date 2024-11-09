@@ -1,6 +1,6 @@
 export type Nullable<T> = T | null;
 
-export interface DinseyCharacter {
+export interface DisneyCharacter {
   _id: number;
   films?: Nullable<string[]>;
   shortFilms?: Nullable<string[]>;
@@ -13,7 +13,7 @@ export interface DinseyCharacter {
   name: string;
   imageUrl: string;
   createdAt: string;
-  upodatedAt: string;
+  updatedAt: string;
   url: string
   __v: number
 }
@@ -25,5 +25,5 @@ export interface DisneyCharacterApiResponse {
     next?: Nullable<string>;
     prev?: Nullable<string>;
   };
-  data?: Nullable<DinseyCharacter[]>;
+  data?: Nullable<DisneyCharacter[]>;
 }

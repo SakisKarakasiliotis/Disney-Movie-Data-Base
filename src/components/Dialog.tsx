@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useMemo } from "react";
-import { DinseyCharacter } from "../services/types";
+import { DisneyCharacter } from "../services/types";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface DialogProps {
-  disneyCharacter: DinseyCharacter;
-  setSelectedDisneyCharacter: (character: DinseyCharacter | null) => void;
+  disneyCharacter: DisneyCharacter;
+  setSelectedDisneyCharacter: (character: DisneyCharacter | null) => void;
 }
 
 /**
@@ -112,6 +112,7 @@ const StyledDialog = styled.dialog`
     max-height: 60vh;
     max-width: 500px;
     overflow: hidden;
+    height: fit-content;
   }
 
   &::backdrop {

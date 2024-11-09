@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGetDisneyCharactersQuery } from "./services/disneyCharacters";
-import { DinseyCharacter, Nullable } from "./services/types";
+import { DisneyCharacter, Nullable } from "./services/types";
 
 import {
   Logo,
@@ -19,7 +19,7 @@ function App() {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(50);
   const [selectedDisneyCharacter, setSelectedDisneyCharacter] =
-    useState<Nullable<DinseyCharacter>>(null);
+    useState<Nullable<DisneyCharacter>>(null);
 
   const [search, setSearch] = useState<{ value: string; type: string }>({
     value: "",

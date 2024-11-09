@@ -1,10 +1,10 @@
 # DCDB Project
 
-### [ Try it online on GitHub pages! 🔗](https://sakiskarakasiliotis.github.io/)
+### [ Try it online on github pages! 🔗](https://sakiskarakasiliotis.github.io/)
 
 ## Overview
 
-The DCDB (Disney Character Data Base) project is an application designed to display and catalog all the available Disney Characters provided from the Disney [API Service](https://disneyapi.dev/)
+The DCDB (Disney Character Data Base) project is a application designed to display and catalogue all the available Disney Characters provided from the Disney [API Service](https://disneyapi.dev/)
 
 The project has kept components simple on purpose. Since everything is used exactly once and in order to keep it clean and straight forward every component made is kept tied to the business logic of the application.
 
@@ -21,7 +21,7 @@ The API is handled utilizing RTKQuery `createApi` utility. While developing I re
 ## Styling
 
 The App was designed with a mobile first approach.
-Styled components were used for the convenience of passing props (admittedly on only one component).
+Styled components where used for the convenience of passing props (admittedly on only one component).
 A small but practical collection of CSS variables is used to achieve uniformity on colors and spacings through the app.
 
 ## Component Breakdown
@@ -35,15 +35,15 @@ Also contains a download button for an XLSX file that contains the same data.
 
 ### Dialog
 
-Displays all the available info about one character. Uses the native HTML Dialog element in order to take advantage of its great accessibility and ready-made functionality.
+Displays all the available info about one character. Uses the native HTML Dialog element in order to take advantage of its great accessibility and ready made functionality.
 
 ### Pagination
 
-Simple components that provide basic navigation functionality both on pages and results per page configuration.
+Simple components that provides basic navigation functionality both on pages and results per page configuration.
 
 ### Search
 
-A component that allows the user to search base on the type of search (name, film, TV show, video game) and a specific keyword. I decided against fetching for results as the user types and added a button (as well as the enter key) as it is in my opinion better for the UX and also better for the server resources (less unnecessary requests). The same could be achieved through the use of a debounce mechanism, but I decided against it to keep this simple.
+A components that allows the user to search base on the type of search (name, film, tv show, video game) and a specific keyword. I decided against fetching for results as the user types and added a button (as well as the enter key) as it is in my opinion better for the UX and also better for the server resources (less unnecessary requests). The same could be achieved through the use of a Debounce mechanism but I decided against it to keep this simple.
 
 ### Table
 

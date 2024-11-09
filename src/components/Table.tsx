@@ -1,5 +1,5 @@
 import { useCallback, useState, useMemo } from "react";
-import { DinseyCharacter } from "../services/types";
+import { DisneyCharacter } from "../services/types";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,9 +9,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 interface TableProps {
-  disneyCharacters: DinseyCharacter[];
+  disneyCharacters: DisneyCharacter[];
   isFetching: boolean;
-  setSelectedDisneyCharacter: (character: DinseyCharacter) => void;
+  setSelectedDisneyCharacter: (character: DisneyCharacter) => void;
 }
 
 type sortDirection = "asc" | "desc" | "";
@@ -93,7 +93,7 @@ export default function Table({
       return disneyCharacters;
 
     return [...disneyCharacters].sort((a, b) => {
-      const key = sortedBy.key as keyof DinseyCharacter;
+      const key = sortedBy.key as keyof DisneyCharacter;
       let aValue: string | number = "";
       let bValue: string | number = "";
 
@@ -148,7 +148,7 @@ export default function Table({
               </td>
             </tr>
           )}
-          {sortedDisneyCharacters.map((disneyCharacter: DinseyCharacter) => (
+          {sortedDisneyCharacters.map((disneyCharacter: DisneyCharacter) => (
             <tr key={disneyCharacter._id}>
               <td>
                 <button

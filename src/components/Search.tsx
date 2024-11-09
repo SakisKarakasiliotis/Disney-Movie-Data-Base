@@ -58,6 +58,7 @@ const StyledSearch = styled.div`
   width: 100%;
   max-width: 500px;
   column-gap: var(--spacing-xsmall);
+  background-color: var(--white-color);
 
   select {
     border: none;
@@ -66,6 +67,7 @@ const StyledSearch = styled.div`
     font-size: var(--font-size-medium);
     color: var(--dark-text-color);
     padding: var(--spacing-small) var(--spacing-medium);
+    background-color: transparent;
 
     &:focus {
       outline: none;
@@ -80,6 +82,7 @@ const StyledSearch = styled.div`
     padding: var(--spacing-small) var(--spacing-medium);
     border-left: 1px solid var(--border-color);
     width: 100%;
+    background-color: transparent;
 
     &:focus {
       outline: none;

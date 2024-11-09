@@ -2,9 +2,13 @@ html {
   box-sizing: border-box;
 }
 
+html, body, button, input, select, textarea {
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  font-size: var(--font-size-medium);
+}
+
 body {
   margin: 0;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.4;
   font-weight: 400;
   color: #000;
