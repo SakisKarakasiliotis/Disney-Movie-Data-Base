@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChevronRight,
-  faChevronLeft,
+  faAngleRight,
+  faAngleLeft,
+  faAnglesRight,
+  faAnglesLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
 type PaginationProps = {
@@ -37,15 +39,26 @@ export default function Pagination({
       </div>
 
       <div className="actions">
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-          <FontAwesomeIcon icon={faChevronLeft} />
+        <button disabled={page === 1} onClick={() => setPage(1)}>
+          <FontAwesomeIcon icon={faAnglesLeft} />
         </button>
-        <span className="current-page">{page}</span>
+        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </button>
+        <span className="current-page">
+          {page} / {totalPages}
+        </span>
         <button
           disabled={page === totalPages}
           onClick={() => setPage(page + 1)}
         >
-          <FontAwesomeIcon icon={faChevronRight} />
+          <FontAwesomeIcon icon={faAngleRight} />
+        </button>
+        <button
+          disabled={page === totalPages}
+          onClick={() => setPage(totalPages)}
+        >
+          <FontAwesomeIcon icon={faAnglesRight} />
         </button>
       </div>
     </StyledPagination>
@@ -61,6 +74,7 @@ const StyledPagination = styled.div`
   .actions {
     display: flex;
     column-gap: var(--spacing-small);
+    align-items: center;
 
     button {
       padding: var(--spacing-xsmall);

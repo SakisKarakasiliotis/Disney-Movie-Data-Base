@@ -2,13 +2,28 @@ html {
   box-sizing: border-box;
 }
 
-:root {
+body {
+  margin: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.4;
   font-weight: 400;
-
   color: #000;
   background-color: #f5f5f5;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-small);
+}
+
+@media (min-width: 1000px) {
+  #root {
+    padding: var(--spacing-medium);
+  }
+}
+
+:root {
   --text-color: #000;
   --border-color: #e0e0e0;
   --primary-color: #906d13;

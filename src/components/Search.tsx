@@ -46,7 +46,8 @@ const StyledSearch = styled.div`
   border: 1px solid var(--border-color);
   overflow: hidden;
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
+  column-gap: var(--spacing-xsmall);
 
   select {
     border: none;
@@ -67,6 +68,8 @@ const StyledSearch = styled.div`
     font-size: var(--font-size-medium);
     color: var(--text-color);
     padding: var(--spacing-small) var(--spacing-medium);
+    border-left: 1px solid var(--border-color);
+    width: 100%;
 
     &:focus {
       outline: none;

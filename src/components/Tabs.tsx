@@ -18,25 +18,27 @@ export default function Tabs({ defaultIndex, labels, children }: TabsProps) {
 
   return (
     <StyledTabs>
-      <ul className="labels" role="tablist" aria-label="tabs">
-        {labels.map((label, index) => (
-          <li key={label}>
-            <button
-              className={`${activeTab === index ? "active" : ""}`}
-              key={label}
-              onClick={() => setActiveTab(index)}
-            >
-              {label}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <nav>
+        <ul className="labels" role="tablist" aria-label="tabs">
+          {labels.map((label, index) => (
+            <li key={label}>
+              <button
+                className={`${activeTab === index ? "active" : ""}`}
+                key={label}
+                onClick={() => setActiveTab(index)}
+              >
+                {label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <div className="content">{activeTabItem}</div>
     </StyledTabs>
   );
 }
 
-const StyledTabs = styled.nav`
+const StyledTabs = styled.div`
   margin-top: var(--spacing-large);
 
   .labels {

@@ -1,34 +1,32 @@
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
-import { DinseyCharacter } from "../services/types";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileExport } from "@fortawesome/free-solid-svg-icons";
 
 interface ExportXlsxProps {
-  data: DinseyCharacter[];
+  data: Data[];
 }
 
-const StyledButton = styled.button`
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: var(--spacing-small) var(--spacing-medium);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-`;
+interface Data {
+  name: string;
+  y: number;
+  films: string[];
+}
 
 export default function ExportXlsx({ data }: ExportXlsxProps) {
   const rows = useMemo(
     () =>
-      data.map((disneyCharacter) => ({
-        Name: disneyCharacter.name,
-        "Number of Films": disneyCharacter.films?.length,
-        Films: disneyCharacter.films?.join(", "),
+      data.map(({ name, y, films }) => ({
+        Name: name,
+        "Number of Films": y,
+        Films: films.join(", "),
       })),
     [data],
   );
 
-  const exportToExcel = () => {
+  const exportToExcel = useCallback(() => {
     const worksheet = XLSX.utils.json_to_sheet(rows);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
@@ -38,7 +36,25 @@ export default function ExportXlsx({ data }: ExportXlsxProps) {
     });
     const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
     saveAs(blob, `export.xlsx`);
-  };
+  }, [rows]);
 
-  return <StyledButton onClick={exportToExcel}>Export to Excel</StyledButton>;
+  return (
+    <StyledButton onClick={exportToExcel}>
+      <FontAwesomeIcon icon={faFileExport} />
+      Export to Excel
+    </StyledButton>
+  );
 }
+
+const StyledButton = styled.button`
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: var(--spacing-small) var(--spacing-medium);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: var(--spacing-large);
+  display: flex;
+  column-gap: var(--spacing-small);
+  align-items: center;
+`;

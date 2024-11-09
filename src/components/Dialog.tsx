@@ -86,20 +86,27 @@ export default function Dialog({
 
 const StyledDialog = styled.dialog`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
   width: 100%;
-  max-width: 500px;
-  max-height: 60vh;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
   border-radius: 8px;
+  inset: 0;
   padding: 0;
   border: 1px solid var(--border-color);
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   margin: 0;
-  overflow: hidden;
+
+  @media (min-width: 500px) {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    max-height: 60vh;
+    max-width: 500px;
+    overflow: hidden;
+  }
 
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
@@ -113,6 +120,13 @@ const StyledDialog = styled.dialog`
     padding-inline: var(--spacing-medium);
     padding-top: var(--spacing-medium);
     border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    background-color: white;
+
+    @media (min-width: 500px) {
+      position: static;
+    }
 
     h2 {
       font-size: var(--font-size-large);
@@ -129,13 +143,16 @@ const StyledDialog = styled.dialog`
   }
 
   .dialog-content {
-    display: grid;
-    grid-template-columns: 200px 1fr;
     padding-block: var(--spacing-medium);
     padding-inline: var(--spacing-medium);
-    column-gap: var(--spacing-medium);
-    overflow: auto;
-    max-height: 500px;
+
+    @media (min-width: 500px) {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      column-gap: var(--spacing-medium);
+      overflow: auto;
+      max-height: 500px;
+    }
 
     figure {
       display: flex;
@@ -144,8 +161,12 @@ const StyledDialog = styled.dialog`
       border-radius: 4px;
       border: 1px solid var(--border-color);
       padding: var(--spacing-xsmall);
-      position: sticky;
-      top: 0;
+      margin-bottom: var(--spacing-medium);
+
+      @media (min-width: 500px) {
+        position: sticky;
+        top: 0;
+      }
 
       img {
         width: 100%;
