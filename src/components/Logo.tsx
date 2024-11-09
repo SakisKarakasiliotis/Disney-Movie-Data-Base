@@ -4,7 +4,7 @@ interface LogoProps {
   url: string;
 }
 
-function Logo({ url }: LogoProps) {
+export default function Logo({ url }: LogoProps) {
   return (
     <StyledLogo>
       <img src={url} alt="" />
@@ -31,5 +31,3 @@ const StyledLogo = styled.figure`
     opacity: 0;
   }
 `;
-
-export default Logo;
