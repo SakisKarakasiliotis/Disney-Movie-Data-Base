@@ -2,16 +2,18 @@ import { useState } from "react";
 import { useGetDisneyCharactersQuery } from "./services/disneyCharacters";
 import { DinseyCharacter, Nullable } from "./services/types";
 
+import {
+  Logo,
+  Tabs,
+  Header,
+  Search,
+  Table,
+  Chart,
+  Dialog,
+  Pagination,
+  Toast,
+} from "./components";
 import logoUrl from "./assets/logo.png";
-
-import Logo from "./components/Logo";
-import Tabs from "./components/Tabs";
-import Header from "./components/Header";
-import Search from "./components/Search";
-import Table from "./components/Table";
-import Chart from "./components/Chart";
-import Dialog from "./components/Dialog";
-import Pagination from "./components/Pagination";
 
 function App() {
   const [page, setPage] = useState<number>(1);
@@ -24,7 +26,11 @@ function App() {
     type: "",
   });
 
-  const { data: response, isFetching } = useGetDisneyCharactersQuery({
+  const {
+    data: response,
+    error,
+    isFetching,
+  } = useGetDisneyCharactersQuery({
     page,
     pageSize,
     ...(search.value && { [search.type]: search.value }),
@@ -37,6 +43,7 @@ function App() {
 
   return (
     <>
+      {!!error && <Toast message="Something went wrong. Please try again." />}
       <Header>
         <Logo url={logoUrl} />
         <Search onSearch={handleSearch} isFetching={isFetching} />

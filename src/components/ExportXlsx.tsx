@@ -15,7 +15,15 @@ interface Data {
   films: string[];
 }
 
+/**
+ * A component that exports data to an Excel file.
+ * @param {ExportXlsxProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
+ */
 export default function ExportXlsx({ data }: ExportXlsxProps) {
+  /**
+   * Memoizes the rows to be exported to Excel.
+   */
   const rows = useMemo(
     () =>
       data.map(({ name, y, films }) => ({
@@ -26,6 +34,9 @@ export default function ExportXlsx({ data }: ExportXlsxProps) {
     [data],
   );
 
+  /**
+   * Exports the data to an Excel file.
+   */
   const exportToExcel = useCallback(() => {
     const worksheet = XLSX.utils.json_to_sheet(rows);
     const workbook = XLSX.utils.book_new();

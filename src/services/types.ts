@@ -1,3 +1,5 @@
+// This file defines TypeScript types for the Disney characters and the API response.
+
 export type Nullable<T> = T | null;
 
 export interface DinseyCharacter {
@@ -25,6 +27,5 @@ export interface DisneyCharacterApiResponse {
     next?: Nullable<string>;
     prev?: Nullable<string>;
   };
-  // The API response can return either an array of characters or a single character
   data?: Nullable<DinseyCharacter[]>;
 }

@@ -24,7 +24,10 @@ body {
 }
 
 :root {
-  --text-color: #000;
+  --white-color: #fff;
+  --black-color: #000;
+  --dark-text-color: var(--black-color);
+  --light-text-color: var(--white-color);
   --border-color: #e0e0e0;
   --primary-color: #906d13;
   --spacing-xsmall: 4px;

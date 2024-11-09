@@ -184,7 +184,7 @@ const StyledTable = styled.div<{ $isFetching: boolean }>`
 
   tr {
     border: 0;
-    background-color: white;
+    background-color: var(--white-color);
     position: relative;
 
     + tr {
@@ -194,7 +194,7 @@ const StyledTable = styled.div<{ $isFetching: boolean }>`
 
   th {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--light-text-color);
     padding: var(--spacing-small) var(--spacing-medium);
     text-align: left;
     position: relative;
@@ -202,7 +202,7 @@ const StyledTable = styled.div<{ $isFetching: boolean }>`
     button {
       border: 0;
       background: 0;
-      color: white;
+      color: var(--light-text-color);
       font-size: var(--font-size-medium);
       padding: 0;
       cursor: pointer;
@@ -221,13 +221,13 @@ const StyledTable = styled.div<{ $isFetching: boolean }>`
     border: 0;
     padding: var(--spacing-small) var(--spacing-medium);
     vertical-align: top;
-    color: var(--text-color);
+    color: var(--dark-text-color);
     text-align: left;
 
     button {
       border: 0;
       background: 0;
-      color: var(--text-color);
+      color: var(--dark-text-color);
       font-size: var(--font-size-medium);
       padding: 0;
       cursor: pointer;
@@ -245,7 +245,7 @@ const StyledTable = styled.div<{ $isFetching: boolean }>`
     tr {
       &:hover {
         background-color: var(--highlight-color);
-        color: white;
+        color: var(--light-text-color);
         cursor: pointer;
       }
     }

@@ -4,17 +4,26 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-type DialogProps = {
+interface DialogProps {
   disneyCharacter: DinseyCharacter;
   setSelectedDisneyCharacter: (character: DinseyCharacter | null) => void;
-};
+}
 
+/**
+ * Dialog component to display details of a Disney character.
+ * @param disneyCharacter - The selected Disney character to display.
+ * @param setSelectedDisneyCharacter - Function to clear the selected Disney character.
+ * @returns {JSX.Element} The rendered Dialog component.
+ */
 export default function Dialog({
   disneyCharacter,
   setSelectedDisneyCharacter,
 }: DialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
+  /**
+   * Closes the dialog and resets the selected Disney character.
+   */
   const closeDialog = useCallback(() => {
     if (!disneyCharacter) return;
     document.body.style.overflow = "auto";
@@ -64,13 +73,13 @@ export default function Dialog({
           </figure>
           <ul className="catalog">
             {catalog.map(({ title, count, items }) => (
-              <li>
+              <li key={title}>
                 <strong>
                   {title} ({count}):
                 </strong>
                 <ul className="medium">
                   {items.length ? (
-                    items.map((film: string) => <li>{film}</li>)
+                    items.map((film: string) => <li key={film}>{film}</li>)
                   ) : (
                     <li>-</li>
                   )}
@@ -94,7 +103,7 @@ const StyledDialog = styled.dialog`
   inset: 0;
   padding: 0;
   border: 1px solid var(--border-color);
-  background-color: white;
+  background-color: var(--white-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   margin: 0;
@@ -122,7 +131,7 @@ const StyledDialog = styled.dialog`
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: var(--white-color);
 
     @media (min-width: 500px) {
       position: static;
@@ -137,7 +146,7 @@ const StyledDialog = styled.dialog`
       background: none;
       border: none;
       cursor: pointer;
-      color: var(--text-color);
+      color: var(--dark-text-color);
       font-size: var(--font-size-large);
     }
   }
@@ -205,7 +214,7 @@ const StyledDialog = styled.dialog`
         }
 
         span {
-          color: var(--text-color);
+          color: var(--dark-text-color);
           font-size: var(--font-size-small);
           text-align: left;
         }

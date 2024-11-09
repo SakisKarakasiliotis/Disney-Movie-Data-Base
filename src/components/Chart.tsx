@@ -14,6 +14,11 @@ interface ChartData {
   films: string[];
 }
 
+/**
+ * Chart component to display Disney characters' film percentages in a pie chart.
+ * @param {ChartProps} props - The props for the Chart component.
+ * @returns {JSX.Element} The rendered Chart component.
+ */
 export default function Chart({ disneyCharacters }: ChartProps) {
   const filteresChartData: ChartData[] = useMemo(
     () =>

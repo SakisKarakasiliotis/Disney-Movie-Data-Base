@@ -4,10 +4,24 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 interface SearchProps {
+  /**
+   * Function to be called when a search is performed.
+   * @param value - The search input value.
+   * @param type - The type of search (e.g., name, films, tvShows, videoGames).
+   */
   onSearch: ({ value, type }: { value: string; type: string }) => void;
+
+  /**
+   * Boolean indicating if a search is currently being fetched.
+   */
   isFetching: boolean;
 }
 
+/**
+ * Search component that allows users to search by different types.
+ * @param onSearch - Function to handle the search action.
+ * @param isFetching - Boolean to disable input during fetching.
+ */
 export default function Search({ onSearch, isFetching }: SearchProps) {
   const [value, setValue] = useState<string>("");
   const [type, setType] = useState<string>("name");
@@ -54,7 +68,7 @@ const StyledSearch = styled.div`
     background: none;
     cursor: pointer;
     font-size: var(--font-size-medium);
-    color: var(--text-color);
+    color: var(--dark-text-color);
     padding: var(--spacing-small) var(--spacing-medium);
 
     &:focus {
@@ -66,7 +80,7 @@ const StyledSearch = styled.div`
     border: none;
     background: none;
     font-size: var(--font-size-medium);
-    color: var(--text-color);
+    color: var(--dark-text-color);
     padding: var(--spacing-small) var(--spacing-medium);
     border-left: 1px solid var(--border-color);
     width: 100%;
@@ -81,6 +95,6 @@ const StyledSearch = styled.div`
     background-color: var(--primary-color);
     border: none;
     cursor: pointer;
-    color: white;
+    color: var(--light-text-color);
   }
 `;

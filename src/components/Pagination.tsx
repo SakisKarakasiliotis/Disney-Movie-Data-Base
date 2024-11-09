@@ -7,21 +7,32 @@ import {
   faAnglesLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-type PaginationProps = {
+interface PaginationProps {
+  /** Current page number */
   page: number;
+  /** Function to set the current page */
   setPage: (page: number) => void;
+  /** Number of items per page */
   pageSize: number;
+  /** Function to set the number of items per page */
   setPageSize: (pageSize: number) => void;
+  /** Total number of pages */
   totalPages: number;
-};
+}
 
+/**
+ * Pagination component to navigate through pages and set page size.
+ *
+ * @param {PaginationProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered pagination component.
+ */
 export default function Pagination({
   page,
   setPage,
   pageSize,
   setPageSize,
   totalPages,
-}: PaginationProps) {
+}: PaginationProps): JSX.Element {
   return (
     <StyledPagination>
       <div className="page-size">
@@ -81,7 +92,7 @@ const StyledPagination = styled.div`
       border: none;
       background: none;
       cursor: pointer;
-      color: var(--text-color);
+      color: var(--dark-text-color);
       transition: opacity 0.2s;
 
       &:disabled {
@@ -102,7 +113,7 @@ const StyledPagination = styled.div`
       background: none;
       cursor: pointer;
       font-size: var(--font-size-medium);
-      color: var(--text-color);
+      color: var(--dark-text-color);
     }
   }
 `;

@@ -1,3 +1,6 @@
+// This file creates an API service using @reduxjs/toolkit/query/react to fetch Disney characters.
+// It defines the query parameters and transforms the API response to ensure the data is always an array.
+
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { DisneyCharacterApiResponse } from './types'
 
